@@ -74,7 +74,7 @@ function create(files, options) {
     );
   }
 
-  header.writeUint32LE(murmur(contents.toString('utf8'), 822616071), 4);
+  header.writeUint32LE(murmur(contents.toString('binary'), 822616071), 4);
 
   return Buffer.concat([header, contents]);
 }

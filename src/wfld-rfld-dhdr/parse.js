@@ -28,7 +28,7 @@ function parse(buf, options) {
     options?.dhdr ?? false ? 128 : 64,
     buf.byteLength,
   );
-  const hash = murmur(contents.toString('utf8'), 822616071);
+  const hash = murmur(contents.toString('binary'), 822616071);
   if (header.readUint32LE(4) !== hash)
     throw new InvalidChecksumError(header.readUint32LE(4), hash);
 

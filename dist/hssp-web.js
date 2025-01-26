@@ -1,4 +1,4 @@
-// https://github.com/HSSPfile/js
+// https://github.com/acriodtheres/hssp-js
 
 /*
 
@@ -44847,7 +44847,7 @@ function create(files, options) {
     );
   }
 
-  header.writeUint32LE(murmur(contents.toString('utf8'), 822616071), 64);
+  header.writeUint32LE(murmur(contents.toString('binary'), 822616071), 64);
 
   return Buffer.concat([header, contents]);
 }
@@ -44966,7 +44966,7 @@ const { byteToBits } = __webpack_require__(8555);
 function parse(buf, options) {
   const header = buf.subarray(0, 128);
   let contents = buf.subarray(128, buf.byteLength);
-  const hash = murmur(contents.toString('utf8'), 822616071);
+  const hash = murmur(contents.toString('binary'), 822616071);
   if (header.readUint32LE(64) !== hash)
     throw new InvalidChecksumError(header.readUint32LE(4), hash);
 
@@ -45314,7 +45314,7 @@ function create(files, options) {
     );
   }
 
-  header.writeUint32LE(murmur(contents.toString('utf8'), 822616071), 4);
+  header.writeUint32LE(murmur(contents.toString('binary'), 822616071), 4);
 
   return Buffer.concat([header, contents]);
 }
@@ -45357,7 +45357,7 @@ function parse(buf, options) {
     options?.dhdr ?? false ? 128 : 64,
     buf.byteLength,
   );
-  const hash = murmur(contents.toString('utf8'), 822616071);
+  const hash = murmur(contents.toString('binary'), 822616071);
   if (header.readUint32LE(4) !== hash)
     throw new InvalidChecksumError(header.readUint32LE(4), hash);
 

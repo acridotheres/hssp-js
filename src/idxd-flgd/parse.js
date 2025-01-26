@@ -23,7 +23,7 @@ const { byteToBits } = require('../bit');
 function parse(buf, options) {
   const header = buf.subarray(0, 128);
   let contents = buf.subarray(128, buf.byteLength);
-  const hash = murmur(contents.toString('utf8'), 822616071);
+  const hash = murmur(contents.toString('binary'), 822616071);
   if (header.readUint32LE(64) !== hash)
     throw new InvalidChecksumError(header.readUint32LE(4), hash);
 
